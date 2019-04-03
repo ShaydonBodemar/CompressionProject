@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=HashTable
+comment1.params=
+comment1.target=HashTable()
+comment2.params=entry
+comment2.target=void\ DictEntry(java.lang.Integer)
+comment3.params=size
+comment3.target=void\ InitHashTable(int)
+comment4.params=entry
+comment4.target=boolean\ CheckPresent(java.lang.Integer)
+comment5.params=size
+comment5.target=void\ Rehash(int)
+numComments=6
