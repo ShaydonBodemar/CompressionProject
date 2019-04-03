@@ -25,16 +25,17 @@ public class HashTable {
     }
     
     public boolean CheckPresent(Integer entry){
-        try{
+        if(table[(entry)%(table.length)]==null){
+            return false;
+        }
+        else{
             for(int i = 0; i < table[(entry)%(table.length)].size(); i++){
-                if(entry==(table[(entry)%(table.length)].get(i))){
+                Integer code = table[(entry)%(table.length)].get(i);
+                if(entry==code){
                     return true;
                 }
             }
             return false;
-        }
-        catch(NullPointerException e){
-            return false;   
         }
     }
 

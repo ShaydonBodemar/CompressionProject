@@ -46,7 +46,7 @@ public class Compress{
                     }
                     else{
                         compressed.add(code);
-                        ht.DictEntry(code);
+                        ht.DictEntry(temp);
                         i = 1;
                         temp = text;
                         code = text;
