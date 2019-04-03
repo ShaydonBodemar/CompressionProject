@@ -1,16 +1,23 @@
 import java.util.*;
 import java.lang.*;
+import java.io.*;
 
 public class HashTable {
-    private LinkedList<Integer>[] table;
+    LinkedList<Integer>[] table;
     private int numItems;
     
-    public HashTable(){
-        table = null;
+    public HashTable(int size){
+        table = new LinkedList[size];
     }
     
     public void DictEntry(Integer entry){
-         table[(entry)%(table.length)].append(entry);
+         if(table[(entry)%(table.length)]==null){
+             table[(entry)%(table.length)] = new LinkedList<Integer>();
+             table[(entry)%(table.length)].add(entry);
+         }
+         else{
+             table[(entry)%(table.length)].add(entry);
+         }
     }
 
     public void InitHashTable(int size){
@@ -18,23 +25,28 @@ public class HashTable {
     }
     
     public boolean CheckPresent(Integer entry){
-        for(int i = 0; i < table[(entry)%(table.length)].getLength(); i++){
-            if(entry==(table[(entry)%(table.length)].peek())){
-                return true;
+        try{
+            for(int i = 0; i < table[(entry)%(table.length)].size(); i++){
+                if(entry==(table[(entry)%(table.length)].get(i))){
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
+        catch(NullPointerException e){
+            return false;   
+        }
     }
 
     public void Rehash(int size){
         LinkedList<Integer>[] temp = new LinkedList[size];
         int index = 0;
         for(int i = 0; i < table.length; i++){
-            int listLength = table[i].getLength();
+            int listLength = table[i].size();
             if(listLength > 0){
                 for(int j = 0; j < listLength; j++){
                     Integer entryTemp = (int)table[i].peek();
-                    temp[(entryTemp)%(temp.length)].append(entryTemp);
+                    temp[(entryTemp)%(temp.length)].add(entryTemp);
                 }
             }
         }
