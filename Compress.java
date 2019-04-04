@@ -11,7 +11,7 @@ public class Compress{
         while(repeat){
             System.out.println("\nWelcome!\n\nEnter the name of the file you would like to compress: ");
             String filename = input.nextLine();
-            HashTable table = new HashTable(439);
+            HashTable table = new HashTable(89);
             table = DictSet(table);
             reader(filename, table);
         }
@@ -29,8 +29,6 @@ public class Compress{
             freader = new BufferedReader(new FileReader(file));
             List<Integer> compressed = new ArrayList<Integer>();
             while((text = freader.read()) != -1){
-                //test print 1
-                System.out.println(text);
                 if(i==0){
                     temp = text;
                     code = temp;
@@ -38,8 +36,6 @@ public class Compress{
                 }
                 else if(i>=1){
                     temp += (text)*(Math.pow(37,i));
-                    System.out.println(temp);
-                    System.out.println(i+"\n");
                     if(ht.CheckPresent(temp)){
                         code = temp;
                         i++;
@@ -51,6 +47,11 @@ public class Compress{
                         temp = text;
                         code = text;
                     }
+                }
+                
+                
+                if(checkSize(ht)){
+                    ht = ht.Rehash(getPrime(ht.Length()));
                 }
             }
             
@@ -68,11 +69,36 @@ public class Compress{
         }
     }
     
+    public static boolean checkSize(HashTable ht){
+        int numItems = ht.Size();
+        if((numItems/(ht.Length())) >= 0.9){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     public static HashTable DictSet(HashTable ht){
         for(int i = 0; i <= 255; i++){
             ht.DictEntry(i);
+            
+            if(checkSize(ht)){
+                ht = ht.Rehash(getPrime(ht.Length()));
+            }
         }
+        System.out.println(ht.Length());
         return ht;
+    }
+    
+    public static int getPrime(int current){
+        int[] primes = {89,439,829,1373,1823,2459,2957,3613,4349,5023,5839,6761,7759,10067,12757,15061,20089,30089};
+        for(int i = 0; i < primes.length; i++){
+            if(current==primes[i]){
+                return primes[i+1];
+            }
+        }
+        return -1;
     }
 
 }

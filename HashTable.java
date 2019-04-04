@@ -6,6 +6,10 @@ public class HashTable {
     LinkedList<Integer>[] table;
     private int numItems;
     
+    public HashTable(LinkedList<Integer>[] input){
+        table = input;
+    }
+    
     public HashTable(int size){
         table = new LinkedList[size];
     }
@@ -18,28 +22,37 @@ public class HashTable {
          else{
              table[(entry)%(table.length)].add(entry);
          }
+         numItems++;
     }
 
     public void InitHashTable(int size){
         table = new LinkedList[size];
     }
     
+    public int Length(){
+        return table.length;
+    }
+    
+    public int Size(){
+        return numItems;
+    }
+    
     public boolean CheckPresent(Integer entry){
-        if(table[(entry)%(table.length)]==null){
+        LinkedList<Integer> test = table[(entry)%(table.length)];
+        if(test==null){
             return false;
         }
         else{
-            for(int i = 0; i < table[(entry)%(table.length)].size(); i++){
-                Integer code = table[(entry)%(table.length)].get(i);
-                if(entry==code){
-                    return true;
-                }
+            if(test.contains(entry)){
+                return true;
             }
-            return false;
+            else{
+                return false;
+            }
         }
     }
 
-    public void Rehash(int size){
+    public HashTable Rehash(int size){
         LinkedList<Integer>[] temp = new LinkedList[size];
         int index = 0;
         for(int i = 0; i < table.length; i++){
@@ -47,9 +60,17 @@ public class HashTable {
             if(listLength > 0){
                 for(int j = 0; j < listLength; j++){
                     Integer entryTemp = (int)table[i].peek();
-                    temp[(entryTemp)%(temp.length)].add(entryTemp);
+                    if(temp[(entryTemp)%(temp.length)]==null){
+                        temp[(entryTemp)%(temp.length)] = new LinkedList<Integer>();
+                        temp[(entryTemp)%(temp.length)].add(entryTemp);
+                    }
+                    else{
+                        temp[(entryTemp)%(temp.length)].add(entryTemp);
+                    }
                 }
             }
         }
+        HashTable newTable = new HashTable(temp);
+        return newTable;
     }
 }
