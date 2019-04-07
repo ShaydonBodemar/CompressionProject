@@ -3,10 +3,10 @@ import java.lang.*;
 import java.io.*;
 
 public class HashTable {
-    LinkedList<Integer>[] table;
+    LinkedList[] table;
     private int numItems;
     
-    public HashTable(LinkedList<Integer>[] input){
+    public HashTable(LinkedList[] input){
         table = input;
     }
     
@@ -16,11 +16,11 @@ public class HashTable {
     
     public void DictEntry(Integer entry){
          if(table[(entry)%(table.length)]==null){
-             table[(entry)%(table.length)] = new LinkedList<Integer>();
-             table[(entry)%(table.length)].add(entry);
+             table[(entry)%(table.length)] = new LinkedList();
+             table[(entry)%(table.length)].ListInsert(entry);
          }
          else{
-             table[(entry)%(table.length)].add(entry);
+             table[(entry)%(table.length)].ListInsert(entry);
          }
          numItems++;
     }
@@ -38,12 +38,12 @@ public class HashTable {
     }
     
     public boolean CheckPresent(Integer entry){
-        LinkedList<Integer> test = table[(entry)%(table.length)];
+        LinkedList test = table[(entry)%(table.length)];
         if(test==null){
             return false;
         }
         else{
-            if(test.contains(entry)){
+            if(test.ContainsCode(entry)){
                 return true;
             }
             else{
@@ -53,19 +53,19 @@ public class HashTable {
     }
 
     public HashTable Rehash(int size){
-        LinkedList<Integer>[] temp = new LinkedList[size];
+        LinkedList[] temp = new LinkedList[size];
         int index = 0;
         for(int i = 0; i < table.length; i++){
-            int listLength = table[i].size();
+            int listLength = table[i].ListLength();
             if(listLength > 0){
-                for(int j = 0; j < listLength; j++){
-                    Integer entryTemp = (int)table[i].peek();
+                for(int j = 1; j <= listLength; j++){
+                    Integer entryTemp = (int)table[i].RetrieveCodeAt(j);
                     if(temp[(entryTemp)%(temp.length)]==null){
-                        temp[(entryTemp)%(temp.length)] = new LinkedList<Integer>();
-                        temp[(entryTemp)%(temp.length)].add(entryTemp);
+                        temp[(entryTemp)%(temp.length)] = new LinkedList();
+                        temp[(entryTemp)%(temp.length)].ListInsert(entryTemp);
                     }
                     else{
-                        temp[(entryTemp)%(temp.length)].add(entryTemp);
+                        temp[(entryTemp)%(temp.length)].ListInsert(entryTemp);
                     }
                 }
             }

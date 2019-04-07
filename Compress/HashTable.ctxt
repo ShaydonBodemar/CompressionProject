@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=HashTable
 comment1.params=input
-comment1.target=HashTable(java.util.LinkedList[])
+comment1.target=HashTable(LinkedList[])
 comment2.params=size
 comment2.target=HashTable(int)
 comment3.params=entry
