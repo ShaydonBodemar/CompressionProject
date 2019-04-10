@@ -121,6 +121,7 @@ public class Compress{
             for(int i: data){
                 out.writeInt(i);
             }
+            out.close();
         }
         catch(IOException e){
             

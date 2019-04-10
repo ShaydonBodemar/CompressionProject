@@ -28,4 +28,30 @@ public class Decompress{
             }
         }
     }
+    
+    public static void reader(String filename, HashTable ht){
+        try{
+            DataInputStream in = new DataInputStream(new FileInputStream(filename));
+            int entry = 0;
+            int q = 0;
+            int p = 0;
+            
+            while(true){
+                
+            }
+        }
+        catch(FileNotFoundException e){
+            //handle exception e
+        }
+        catch(EOFException e){
+            //handles the event of the binary file having been read all the way through
+        }
+        catch(IOException e){
+            //handle exception e
+        }
+        finally{
+            //handle general case
+        }
+        
+    }
 }
