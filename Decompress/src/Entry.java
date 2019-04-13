@@ -6,15 +6,20 @@ public class Entry{
     private String entry;
 
     public Entry() {
-        code;
-        entry;
+        code = 0;
+        entry = null;
     }
 
     public void setCode(int c) {
         code = c;
     }
 
-    public setEntry(String e) {
+    public void setEntry(String e) {
+        entry = e;
+    }
+
+    public void set(int c, String e){
+        code = c;
         entry = e;
     }
 }

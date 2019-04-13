@@ -9,6 +9,7 @@ import java.io.*;
 public class HashTable
 {
     Entry table[];
+    private int numItems;
 
     public HashTable(int size)
     {
@@ -18,5 +19,13 @@ public class HashTable
     public void sampleMethod(int y)
     {
         
+    }
+
+    public int Length(){
+        return table.length;
+    }
+
+    public int Size() {
+        return numItems;
     }
 }

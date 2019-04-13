@@ -54,7 +54,6 @@ public class HashTable {
 
     public HashTable Rehash(int size){
         LinkedList[] temp = new LinkedList[size];
-        int index = 0;
         for(int i = 0; i < table.length; i++){
             int listLength = table[i].ListLength();
             if(listLength > 0){
