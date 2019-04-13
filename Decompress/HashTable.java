@@ -8,11 +8,11 @@ import java.io.*;
  */
 public class HashTable
 {
-    ArrayList<Integer> table;
+    Entry table[];
 
-    public HashTable()
+    public HashTable(int size)
     {
-        table = new ArrayList<Integer>();
+        table = new Entry[size];
     }
 
     public void sampleMethod(int y)

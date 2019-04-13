@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=HashTable
+comment1.params=input
+comment1.target=HashTable(LinkedList[])
+comment2.params=size
+comment2.target=HashTable(int)
+comment3.params=entry
+comment3.target=void\ DictEntry(java.lang.Integer)
+comment4.params=size
+comment4.target=void\ InitHashTable(int)
+comment5.params=
+comment5.target=int\ Length()
+comment6.params=
+comment6.target=int\ Size()
+comment7.params=entry
+comment7.target=boolean\ CheckPresent(java.lang.Integer)
+comment8.params=size
+comment8.target=HashTable\ Rehash(int)
+numComments=9

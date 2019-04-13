@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Compress
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=filename\ ht
+comment2.target=void\ reader(java.lang.String,\ HashTable)
+comment3.params=ht
+comment3.target=boolean\ checkSize(HashTable)
+comment4.params=ht
+comment4.target=HashTable\ DictSet(HashTable)
+comment5.params=current
+comment5.target=int\ getPrime(int)
+comment6.params=filename\ data
+comment6.target=void\ fileWriter(java.lang.String,\ java.util.ArrayList)
+comment7.params=
+comment7.target=void\ logFileWriter()
+numComments=8
