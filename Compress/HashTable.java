@@ -1,6 +1,4 @@
-import java.util.*;
 import java.lang.*;
-import java.io.*;
 
 public class HashTable {
     LinkedList[] table;
@@ -23,10 +21,6 @@ public class HashTable {
              table[(entry)%(table.length)].ListInsert(entry);
          }
          numItems++;
-    }
-
-    public void InitHashTable(int size){
-        table = new LinkedList[size];
     }
     
     public int Length(){

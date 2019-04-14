@@ -11,7 +11,7 @@ public class Decompress{
         while(repeat){
             System.out.println("\nWelcome!\n\nEnter the name of the file you would like to compress: ");
             String filename = input.nextLine();
-            HashTable table = new HashTable();
+            HashTable table = new HashTable(439);
             table = DictSet(table);
             reader(filename, table);
             
@@ -43,15 +43,40 @@ public class Decompress{
         catch(FileNotFoundException e){
             //handle exception e
         }
-        catch(EOFException e){
-            //handles the event of the binary file having been read all the way through
-        }
-        catch(IOException e){
-            //handle exception e
-        }
         finally{
             //handle general case
         }
         
+    }
+
+    public static HashTable DictSet(HashTable ht){
+        for(int i = 0; i < 256; i++){
+            ht.DictEntry(i,Integer.toString(i));
+
+            if(checkSize(ht)){
+                ht = ht.Rehash(getPrime(ht.Length()));
+            }
+        }
+        System.out.println(ht.Length());
+        return ht;
+    }
+
+    public static boolean checkSize(HashTable ht){
+        if(ht.Length() >= (0.9)*ht.Size()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static int getPrime(int current){
+        int[] primes = {439,829,1373,1823,2459,2957,3613,4349,5023,5839,6761,7759,10067,12757,15061,20089,30089};
+        for(int i = 0; i < primes.length; i++){
+            if(current==primes[i]){
+                return primes[i+1];
+            }
+        }
+        return -1;
     }
 }
