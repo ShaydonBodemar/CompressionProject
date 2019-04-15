@@ -42,7 +42,7 @@ public class Decompress{
         File f = new File(filename);
 
         p = in.readInt();
-        output += ll.RetrieveTextAt(p);
+        output += ll.RetrieveTextAt(p+1);
         q = p;
 
         for(int i = 0 ; i < ((f.length()-4) / 4) ; i++){
@@ -61,7 +61,7 @@ public class Decompress{
 
         if((index = ll.ContainsCode(p)) != -1){
             temp = ll.RetrieveTextAt(index);
-            ll.ListInsert(p, ll.RetrieveTextAt(ll.ContainsCode(q)) + temp.charAt(0));
+            ll.ListInsert(q + (int)Math.pow(37,ll.RetrieveTextAt(ll.ContainsCode(q)).length())*temp.charAt(0), ll.RetrieveTextAt(ll.ContainsCode(q)) + temp.charAt(0));
         }
         else{
             temp = ll.RetrieveTextAt(ll.ContainsCode(q));
