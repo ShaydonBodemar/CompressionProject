@@ -66,6 +66,7 @@ public class Compress{
                     ht = ht.Rehash(getPrime(ht.Length()));
                 }
             }
+            compressed.add(temp);
             
             
             fileWriter(filename, compressed);
