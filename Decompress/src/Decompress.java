@@ -11,9 +11,14 @@ public class Decompress{
         while(repeat){
             System.out.println("\nWelcome!\n\nEnter the name of the file you would like to decompress: ");
             String filename = input.nextLine();
-            HashTable table = new HashTable();
-            table = DictSet(table);
-            reader(filename, table);
+            LinkedList ll = new LinkedList();
+            ll = DictSet(ll);
+            try {
+                decompress(filename, ll);
+            }
+            catch(IOException e){
+                //ok cool now what
+            }
             
             //ask user if he/she would like to read a new file in
             System.out.println("\n\nWould you like to repeat (y/n)?");
@@ -28,35 +33,70 @@ public class Decompress{
             }
         }
     }
+
+    public static void decompress(String filename, LinkedList ll) throws IOException {
+        String output = "";
+        int p, q;
+
+        DataInputStream in = new DataInputStream(new FileInputStream(filename));
+        File f = new File(filename);
+
+        p = in.readInt();
+        output += ll.RetrieveTextAt(p);
+        q = p;
+
+        for(int i = 0 ; i < ((f.length()-4) / 4) ; i++){
+            p = in.readInt();
+            output += process(q,p,ll);
+            q = p;
+        }
+        in.close();
+
+        System.out.println(output);
+    }
+
+    public static String process(int q, int p, LinkedList ll){
+        String temp = "";
+        int index;
+
+        if((index = ll.ContainsCode(p)) != -1){
+            temp = ll.RetrieveTextAt(index);
+            ll.ListInsert(p, ll.RetrieveTextAt(ll.ContainsCode(q)) + temp.charAt(0));
+        }
+        else{
+            temp = ll.RetrieveTextAt(ll.ContainsCode(q));
+            temp += temp.substring(0, 1);
+            ll.ListInsert(p, temp);
+        }
+        return temp;
+    }
+
     
-    public static void reader(String filename, HashTable ht){
+    /*public static void reader(String filename, LinkedList ll){
         String output = "";
         try{
             DataInputStream in = new DataInputStream(new FileInputStream(filename));
             int q = in.readInt();
-            int qlength = ht.GetText(ht.Contains(q)).length();
-            output += ht.GetText(ht.Contains(q));
+            output += ll.RetrieveTextAt(ll.ContainsCode(q));
             int p = in.readInt();
             String temp;
             int nextCode;
             int index;
             
-            while(true){
+            while(true) {
                 nextCode = in.readInt();
-                index = ht.Contains(p);
+                index = ll.ContainsCode(p);
                 System.out.println(index);
-                if(index != -1){
-                    temp = ht.GetText(index);
+                if (index != -1) {
+                    temp = ll.RetrieveTextAt(index);
                     output += temp;
-                    ht.DictEntry(q + (int)Math.pow(37,qlength)*temp.charAt(0), ht.GetText(ht.Contains(q)) + temp.substring(0,1));
-                }
-                else{
+                    ll.ListInsert(nextCode, ll.RetrieveTextAt(ll.ContainsCode(q)) + temp.charAt(0));
+                } else {
                     System.out.println("Entry found");
-                    temp = ht.GetText(ht.Contains(q));
-                    temp += temp.substring(0,1);
+                    temp = ll.RetrieveTextAt(ll.ContainsCode(q));
+                    temp += temp.substring(0, 1);
                     output += temp;
-                    System.out.println(output + "\n");
-                    ht.DictEntry(p, temp);
+                    ll.ListInsert(p, temp);
                 }
 
                 q = p;
@@ -77,38 +117,13 @@ public class Decompress{
             //handle general case
         }
         
-    }
-
-    public static HashTable DictSet(HashTable ht){
-        for(int i = 0; i < 256; i++){
-            ht.DictEntry(i,Character.toString((char)i));
-
-            //rehashing may not be necessary using a LinkedList() approach
-            /*if(checkSize(ht)){
-                ht = ht.Rehash(getPrime(ht.Length()));
-            }*/
-        }
-        System.out.println(ht.Length());
-        return ht;
-    }
-
-    //only useful if rehashing is necessary
-    /*public static boolean checkSize(HashTable ht){
-        if(ht.Length() >= (0.9)*ht.Size()){
-            return true;
-        }
-        else{
-            return false;
-        }
     }*/
 
-    public static int getPrime(int current){
-        int[] primes = {439,829,1373,1823,2459,2957,3613,4349,5023,5839,6761,7759,10067,12757,15061,20089,30089};
-        for(int i = 0; i < primes.length; i++){
-            if(current==primes[i]){
-                return primes[i+1];
-            }
+    public static LinkedList DictSet(LinkedList ll){
+        for(int i = 0; i < 256; i++){
+            ll.ListInsert(i,Character.toString((char)i));
         }
-        return -1;
+        System.out.println(ll.ListLength());
+        return ll;
     }
 }
