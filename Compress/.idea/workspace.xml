@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8c82742-112a-437f-bb67-787cc82ef23b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Compress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compress/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compress/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compress/Compress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compress/Compress.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Decompress/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Decompress/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Decompress/out/production/Decompress/Decompress.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Decompress/out/production/Decompress/Decompress.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Decompress/src/Decompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Decompress/src/Decompress.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -140,7 +135,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24681422" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -151,7 +145,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13437058" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.13437058" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

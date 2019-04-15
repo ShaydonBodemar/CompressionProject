@@ -5,15 +5,35 @@ import java.util.*;
 public class Decompress{
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
+        LinkedList ll;
         boolean repeat = true;
+
+        if(args.length > 0){
+            String filename = args[0];
+            ll = new LinkedList();
+            ll = DictSet(ll);
+
+            try {
+                long startTime = System.nanoTime();
+                decompress(filename, ll);
+                long elapTime = System.nanoTime() - startTime;
+                writeLogFile(filename,elapTime);
+            }
+            catch(IOException e){
+                //ok cool now what
+            }
+        }
         
         while(repeat){
             System.out.println("\nWelcome!\n\nEnter the name of the file you would like to decompress: ");
             String filename = input.nextLine();
-            LinkedList ll = new LinkedList();
+            ll = new LinkedList();
             ll = DictSet(ll);
             try {
+                long startTime = System.nanoTime();
                 decompress(filename, ll);
+                long elapTime = System.nanoTime() - startTime;
+                writeLogFile(filename,elapTime);
             }
             catch(IOException e){
                 //ok cool now what
@@ -50,6 +70,8 @@ public class Decompress{
         System.out.println(q + "\t" + p);
         in.close();
 
+        writeTextFile(filename,output);
+
         System.out.println(output);
     }
 
@@ -75,5 +97,26 @@ public class Decompress{
         }
         System.out.println(ll.ListLength());
         return ll;
+    }
+
+    public static void writeTextFile(String filename, String output){
+        try{
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename.substring(0,filename.length() - 4)));
+            out.write(output);
+        }
+        catch(IOException e){
+            //exception handling
+        }
+    }
+
+    public static void writeLogFile(String filename, long elapTime){
+        try{
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename.substring(0,filename.length() - 4)));
+            double seconds = (double)elapTime/1000000000;
+            out.write("Decompression for file "+filename+".\nDecompression took "+seconds+".\nThe table was doubled 0 times.");
+        }
+        catch(IOException e){
+            //exception handling
+        }
     }
 }
