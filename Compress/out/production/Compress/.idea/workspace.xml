@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8c82742-112a-437f-bb67-787cc82ef23b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trial.txt.zzz" beforeDir="false" afterPath="$PROJECT_DIR$/Trial.txt.zzz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ab.txt.zzz" beforeDir="false" afterPath="$PROJECT_DIR$/ab.txt.zzz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compress/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compress/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compress/Compress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compress/Compress.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Compress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Decompress/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Decompress/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Decompress/Trial.txt.zzz" beforeDir="false" afterPath="$PROJECT_DIR$/../Decompress/Trial.txt.zzz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Decompress/ab.txt.zzz" beforeDir="false" afterPath="$PROJECT_DIR$/../Decompress/ab.txt.zzz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Decompress/out/production/Decompress/Decompress.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Decompress/out/production/Decompress/Decompress.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Decompress/src/Decompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Decompress/src/Decompress.java" afterDir="false" />
     </list>
@@ -28,11 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Compress.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="44" column="32" lean-forward="true" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
-              <folding>
-                <element signature="e#1333#1342#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="387">
+              <caret line="150" column="78" selection-start-line="150" selection-start-column="78" selection-end-line="150" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -40,8 +32,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HashTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+            <state relative-caret-position="357">
+              <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+              <folding>
+                <element signature="e#141#142#0" expanded="true" />
+                <element signature="e#170#171#0" expanded="true" />
+                <element signature="e#1010#1011#0" expanded="true" />
+                <element signature="e#1062#1063#0" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
+                <element signature="e#1096#1097#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -181,23 +181,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Compress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="44" column="32" lean-forward="true" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
-          <folding>
-            <element signature="e#1333#1342#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HashTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
@@ -217,6 +200,28 @@
             <element signature="e#616#617#0" expanded="true" />
             <element signature="e#647#648#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HashTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+          <folding>
+            <element signature="e#141#142#0" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#1010#1011#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1096#1097#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="150" column="78" selection-start-line="150" selection-start-column="78" selection-end-line="150" selection-end-column="78" />
         </state>
       </provider>
     </entry>

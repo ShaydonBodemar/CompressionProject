@@ -103,6 +103,7 @@ public class Decompress{
         try{
             BufferedWriter out = new BufferedWriter(new FileWriter(filename.substring(0,filename.length() - 4)));
             out.write(output);
+            out.close();
         }
         catch(IOException e){
             //exception handling
@@ -111,9 +112,10 @@ public class Decompress{
 
     public static void writeLogFile(String filename, long elapTime){
         try{
-            BufferedWriter out = new BufferedWriter(new FileWriter(filename.substring(0,filename.length() - 4)));
+            PrintWriter out = new PrintWriter(filename.substring(0,filename.length() - 4)+".log", "UTF-8");
             double seconds = (double)elapTime/1000000000;
-            out.write("Decompression for file "+filename+".\nDecompression took "+seconds+".\nThe table was doubled 0 times.");
+            out.print("Decompression for file "+filename+".\nDecompression took "+seconds+".\nThe table was doubled 0 times.");
+            out.close();
         }
         catch(IOException e){
             //exception handling

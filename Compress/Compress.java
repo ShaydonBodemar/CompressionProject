@@ -11,7 +11,7 @@ public class Compress{
         while(repeat){
             System.out.println("\nWelcome!\n\nEnter the name of the file you would like to compress: ");
             String filename = input.nextLine();
-            HashTable table = new HashTable(89);
+            HashTable table = new HashTable(439);
             table = DictSet(table);
             reader(filename, table);
             
@@ -32,12 +32,16 @@ public class Compress{
     public static void reader(String filename, HashTable ht){
         File file = new File(filename);
         BufferedReader freader = null;
+        long initTime;
+        long elapTime;
+        int rehashed = 0;
         int text = 0;
         int temp = 0;
         int code = 0;
         int i = 0;
         
         try{
+            initTime = System.nanoTime();
             freader = new BufferedReader(new FileReader(file));
             ArrayList<Integer> compressed = new ArrayList<Integer>();
             while((text = freader.read()) != -1){
@@ -64,12 +68,15 @@ public class Compress{
                 
                 if(checkSize(ht)){
                     ht = ht.Rehash(getPrime(ht.Length()));
+                    rehashed++;
                 }
             }
             compressed.add(temp);
-            
+            elapTime = System.nanoTime() - initTime;
+
             
             fileWriter(filename, compressed);
+            logFileWriter(filename,ht,(double)elapTime/1000000000,rehashed);
             //test print 2
             System.out.println(compressed);
         }
@@ -129,7 +136,26 @@ public class Compress{
         }
     }
     
-    public static void logFileWriter(){
-        
+    public static void logFileWriter(String filename, HashTable ht, double time, int rehashed){
+        File file1 = new File(filename);
+        File file2 = new File(filename+".zzz");
+        double initLenKB = file1.length()/1024;
+        double finalLenKB = file2.length()/1024;
+
+        try{
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename+".zzz.log"));
+            out.write("Compression of "+filename+"\n");
+            out.write("Compressed from "+initLenKB+"kb to "+finalLenKB+"kb\n");
+            out.write("Compression took "+time+" seconds\n");
+            out.write("Hash table is "+ht.NumLists()/ht.Length()*100+"% full\n");
+            out.write("The average linked list is "+(double)ht.Size()/(double)ht.NumLists()+" elements long\n");
+            out.write("The longest list contains "+ht.LongestList()+" elements\n");
+            out.write("The dictionary contains "+ht.Size()+" total entries\n");
+            out.write("The dictionary was rehashed "+rehashed+" times");
+            out.close();
+        }
+        catch(IOException e){
+            //handle this bad boy
+        }
     }
 }

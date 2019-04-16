@@ -3,22 +3,30 @@ import java.lang.*;
 public class HashTable {
     LinkedList[] table;
     private int numItems;
-    
+    private int numLists;
+    private int longest;
+
     public HashTable(LinkedList[] input){
         table = input;
     }
     
     public HashTable(int size){
         table = new LinkedList[size];
+        numItems = 0;
+        longest = 1;
     }
     
     public void DictEntry(Integer entry){
          if(table[(entry)%(table.length)]==null){
              table[(entry)%(table.length)] = new LinkedList();
              table[(entry)%(table.length)].ListInsert(entry);
+             numLists++;
          }
          else{
              table[(entry)%(table.length)].ListInsert(entry);
+             if(table[(entry)%(table.length)].ListLength() > longest){
+                 longest++;
+             }
          }
          numItems++;
     }
@@ -29,6 +37,14 @@ public class HashTable {
     
     public int Size(){
         return numItems;
+    }
+
+    public int NumLists(){
+        return numLists;
+    }
+
+    public int LongestList(){
+        return longest;
     }
     
     public boolean CheckPresent(Integer entry){
@@ -47,6 +63,8 @@ public class HashTable {
     }
 
     public HashTable Rehash(int size){
+        longest = 0;
+        numLists = 1;
         LinkedList[] temp = new LinkedList[size];
         for(int i = 0; i < table.length; i++){
             int listLength = table[i].ListLength();
@@ -56,9 +74,13 @@ public class HashTable {
                     if(temp[(entryTemp)%(temp.length)]==null){
                         temp[(entryTemp)%(temp.length)] = new LinkedList();
                         temp[(entryTemp)%(temp.length)].ListInsert(entryTemp);
+                        numLists++;
                     }
                     else{
                         temp[(entryTemp)%(temp.length)].ListInsert(entryTemp);
+                        if(temp[(entryTemp)%(temp.length)].ListLength() > longest){
+                            longest++;
+                        }
                     }
                 }
             }
