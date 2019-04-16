@@ -10,15 +10,6 @@ public class LinkedList
         numItems = 0;
     }
 
-    public Node getHead() {
-        return head;
-    }
-
-    public boolean ListIsEmpty()
-    {
-        return numItems == 0;
-    }
-
     public int ListLength()
     {
         return numItems;

@@ -1,7 +1,5 @@
 public class Node
 {
-    // private String stringEntry;
-    //private char charEntry;
     private int code;
     private String text;
     private Node next;
@@ -11,8 +9,6 @@ public class Node
         code = 0;
         text = null;
         next = null;
-        //charEntry = 0;
-        //stringEntry = "";
     }
 
     public Node(int newCode, String newText)
@@ -22,7 +18,7 @@ public class Node
         next = null;
     }
 
-    public Node (int newCode, String newText, Node nextNode)
+    public Node(int newCode, String newText, Node nextNode)
     {
         code = newCode;
         text = newText;

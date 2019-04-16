@@ -1,7 +1,5 @@
 public class Node
 {
-    // private String stringEntry;
-    //private char charEntry;
     private int code;
     private Node next;
 
@@ -9,8 +7,6 @@ public class Node
     {
         code = 0;
         next = null;
-        //charEntry = 0;
-        //stringEntry = "";
     }
 
     public Node(int newEntry)

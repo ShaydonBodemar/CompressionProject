@@ -7,6 +7,13 @@ public class Compress{
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         boolean repeat = true;
+
+        if(args.length > 0){
+            String filename = args[0];
+            HashTable table = new HashTable(439);
+            table = DictSet(table);
+            reader(filename, table);
+        }
         
         while(repeat){
             System.out.println("\nWelcome!\n\nEnter the name of the file you would like to compress: ");
@@ -139,16 +146,16 @@ public class Compress{
     public static void logFileWriter(String filename, HashTable ht, double time, int rehashed){
         File file1 = new File(filename);
         File file2 = new File(filename+".zzz");
-        double initLenKB = file1.length()/1024;
-        double finalLenKB = file2.length()/1024;
+        double initLenKB = (double)file1.length()/1024;
+        double finalLenKB = (double)file2.length()/1024;
 
         try{
             BufferedWriter out = new BufferedWriter(new FileWriter(filename+".zzz.log"));
             out.write("Compression of "+filename+"\n");
-            out.write("Compressed from "+initLenKB+"kb to "+finalLenKB+"kb\n");
-            out.write("Compression took "+time+" seconds\n");
-            out.write("Hash table is "+ht.NumLists()/ht.Length()*100+"% full\n");
-            out.write("The average linked list is "+(double)ht.Size()/(double)ht.NumLists()+" elements long\n");
+            out.write("Compressed from "+round(initLenKB,3)+"KB to "+round(finalLenKB,3)+"KB\n");
+            out.write("Compression took "+round(time,6)+" seconds\n");
+            out.write("Hash table is "+round(((double)ht.NumLists()/ht.Length())*100,3)+"% full\n");
+            out.write("The average linked list is "+round((double)ht.Size()/(double)ht.NumLists(),3)+" elements long\n");
             out.write("The longest list contains "+ht.LongestList()+" elements\n");
             out.write("The dictionary contains "+ht.Size()+" total entries\n");
             out.write("The dictionary was rehashed "+rehashed+" times");
@@ -157,5 +164,13 @@ public class Compress{
         catch(IOException e){
             //handle this bad boy
         }
+    }
+
+    private static double round(double value, int places){
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(Double.toString(value));
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

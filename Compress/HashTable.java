@@ -12,7 +12,6 @@ public class HashTable {
     
     public HashTable(int size){
         table = new LinkedList[size];
-        numItems = 0;
         longest = 1;
     }
     
@@ -63,8 +62,8 @@ public class HashTable {
     }
 
     public HashTable Rehash(int size){
-        longest = 0;
-        numLists = 1;
+        longest = 1;
+        numLists = 0;
         LinkedList[] temp = new LinkedList[size];
         for(int i = 0; i < table.length; i++){
             int listLength = table[i].ListLength();
